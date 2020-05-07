@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -54,7 +55,9 @@ public class HangedMan {
 		if (wordToSolve.contains(guess)) {
 			return hangManMap.get(0);
 		}else {
-			for ()
+			for(Map.Entry<Integer, String> entry : hangManMap.entrySet()) {
+				System.out.println(entry.getKey() + "\t" + entry.getValue());
+			}
 		}
 	}
 	
