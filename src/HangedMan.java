@@ -40,7 +40,7 @@ public class HangedMan {
 	public static String gameOver() {
 		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | / \\"+"\n"+"_|_"+"\n"+"GAME OVER";
 	}
-	
+	public static String missCounter(char guess) {
 	HashMap<Integer, String> hangManMap = new HashMap<>();
 	
 	hangManMap.put(0, allTries());
@@ -51,7 +51,7 @@ public class HangedMan {
 	hangManMap.put(5, fiveMisses());
 	hangManMap.put(6, gameOver());
 	
-	public static int missCounter(char guess) {
+	
 		if (wordToSolve.contains(guess)) {
 			return hangManMap.get(0);
 		}else {
@@ -60,5 +60,23 @@ public class HangedMan {
 			}
 		}
 	}
+	
+	boolean repeated = false;
+	int length = wordToSolve.length();
+	char[] wordToSolveChars = wordToSolve.toCharArray();
+	 if (!repeated) {
+         int times = 0; 
+         for (int index = 0; index < length; index++) {
+             if (wordToSolveChars[index] == guess) {
+                 blankWord[index] = guess;  
+                 correct = true;
+                 times++;
+             }
+         }
+         if (correct) {
+             System.out.println("The letter " + guess + " is in the word you're trying to solve! There are " + times + " " + guess + " 's in the word. Revealing the letter(s): ");
+         } else {
+             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
+         }
 	
 }
