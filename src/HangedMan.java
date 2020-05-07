@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 /*
  * The HangMan() Class object could implement an interface, if you want. 
  * It will need String variables to set up the display. 
@@ -12,101 +16,46 @@
  * 7. ….continued
  */
 
-public class HangedMan implements HangManInterface {
-	private String myLeftArm;
-	private String myRightArm;
-	private String myLeftLeg;
-	private String myRightLeg;
-	private String myHead;
-	private String myBody;
+public class HangedMan {
 	
-	public void setLeftArm(String myLeftArm) {
-		this.myLeftArm = myLeftArm;
+	public static String allTries() {
+		return " ____"+"\n"+" |"+"\n"+" |"+"\n"+"_|_"+"\n";
 	}
-	
-	public void setRightArm(String myRightArm) {
-		this.myRightArm = myRightArm;
+	public static String oneMiss() {
+		return " ____"+"\n"+" |  O"+"\n"+" |"+"\n"+"_|_"+"\n";
 	}
-	
-	public void setLeftLeg(String myLeftLeg) {
-		this.myLeftLeg = myLeftLeg;
+	public static String twoMisses() {
+		return " ____"+"\n"+" |  O"+"\n"+" |  |"+"\n"+"_|_"+"\n";
 	}
-	
-	public void setRightLeg(String myRightLeg) {
-		this.myRightLeg = myRightLeg;
+	public static String threeMisses() {
+		return " ____"+"\n"+" | \\O"+"\n"+" |  |"+"\n"+"_|_"+"\n";
 	}
-	
-	public void setHead(String myHead) {
-		this.myHead = myHead;
+	public static String fourMisses() {
+		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+"_|_"+"\n";
+	}
+	public static String fiveMisses() {
+		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | /"+"\n"+"_|_"+"\n";
+	}
+	public static String gameOver() {
+		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | / \\"+"\n"+"_|_"+"\n"+"GAME OVER";
 	}
 	
-	public void setBody(String myBody) {
-		this.myBody = myBody;
-	}
+	HashMap<Integer, String> hangManMap = new HashMap<>();
 	
-	public String getLeftArm () {
-		return myLeftArm;
-	}
+	hangManMap.put(0, allTries());
+	hangManMap.put(1, oneMiss());
+	hangManMap.put(2, twoMisses());
+	hangManMap.put(3, threeMisses());
+	hangManMap.put(4, fourMisses());
+	hangManMap.put(5, fiveMisses());
+	hangManMap.put(6, gameOver());
 	
-	public String getRightArm () {
-		return myRightArm;
-	}
-	
-	public String getLeftLeg () {
-		return myLeftLeg;
-	}
-	
-	public String getRightLeg() {
-		return myRightLeg;
-	}
-	
-	public String getHead() {
-		return myHead;
-	}
-	
-	public String getBody() {
-		return myBody;
-	}
-			
-	@Override
-	public String toString() {
-		return "";
-	}
-
-	@Override
-	public String myLeftArm() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String myRightArm() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String myHead() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String myLeftLeg() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String myRightLeg() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String myBody() {
-		// TODO Auto-generated method stub
-		return null;
+	public static int missCounter(char guess) {
+		if (wordToSolve.contains(guess)) {
+			return hangManMap.get(0);
+		}else {
+			for ()
+		}
 	}
 	
 }
