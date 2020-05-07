@@ -38,13 +38,11 @@ public class Game {
 	}
 	
 	//Create the text to display what word to solve
-	public static String createEmptyWord (String word) {
-		String emptyWord = "";
+	public static void createEmptyWord (String word, List<String> blankWord) {
 		String blank = "_";
 		for (int i = 0; i < word.length(); i++) {
-			emptyWord += blank + " ";
+			blankWord.add(blank + " ");
 		}
-		return emptyWord;
 	}
 	
 	//Guess a letter

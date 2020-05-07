@@ -18,7 +18,7 @@ public class MidTerm {
 		String name = scan.nextLine();
 		Player player2 = new Player(name);
 		
-		List<String> blankWord; //This is for the display, it might end up in the
+		List<String> blankWord = new ArrayList<>(); //This is for the display, it might end up in the
 						  //HangedMan class
 		
 		//Set path for the words text file
@@ -31,7 +31,7 @@ public class MidTerm {
 		while (true) { //While loop for a new game. Goes until user quits.
 			
 			wordToSolve = Game.selectWord(words); //Pick a word for the game
-			blankWord = Game.createEmptyWord(wordToSolve); //Create empty display
+			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
 														   //of the word.
 			
 			

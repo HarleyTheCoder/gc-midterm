@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -62,15 +63,19 @@ public class HangedMan {
 		}
 	}
 	
-	public static String guessChecker (String wordToSolve, List<String> blankWord) {
+	public static String guessChecker (char guess, String wordToSolve, List<String> blankWord) {
 		boolean repeated = false;
+		boolean correct = false;
 		int length = wordToSolve.length();
-		char[] wordToSolveChars = wordToSolve.toCharArray();
+		List<Character> wordToSolveChars = new ArrayList<>();
+		for (int i = 0; i < length; i++) {
+			wordToSolveChars.add(wordToSolve.charAt(i));
+		}
 		 if (!repeated) {
 	         int times = 0; 
 	         for (int index = 0; index < length; index++) {
-	             if (wordToSolveChars[index] == guess) {
-	                 blankWord[index] = guess;  
+	             if (wordToSolveChars.get(index) == guess) {
+	                 blankWord.set(index, Character.toString(guess));
 	                 correct = true;
 	                 times++;
 	             }
@@ -80,7 +85,7 @@ public class HangedMan {
 	         } else {
 	             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
 	         }
+		 }
+	
 	}
-	
-	
 }
