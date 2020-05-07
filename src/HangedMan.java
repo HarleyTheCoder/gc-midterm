@@ -61,4 +61,22 @@ public class HangedMan {
 		}
 	}
 	
+	boolean repeated = false;
+	int length = wordToSolve.length();
+	char[] wordToSolveChars = wordToSolve.toCharArray();
+	 if (!repeated) {
+         int times = 0; 
+         for (int index = 0; index < length; index++) {
+             if (wordToSolveChars[index] == guess) {
+                 blankWord[index] = guess;  
+                 correct = true;
+                 times++;
+             }
+         }
+         if (correct) {
+             System.out.println("The letter " + guess + " is in the word you're trying to solve! There are " + times + " " + guess + " 's in the word. Revealing the letter(s): ");
+         } else {
+             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
+         }
+	
 }
