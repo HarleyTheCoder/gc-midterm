@@ -12,6 +12,101 @@
  * 7. ….continued
  */
 
-public class HangedMan {
-	//code
+public class HangedMan implements HangManInterface {
+	private String myLeftArm;
+	private String myRightArm;
+	private String myLeftLeg;
+	private String myRightLeg;
+	private String myHead;
+	private String myBody;
+	
+	public void setLeftArm(String myLeftArm) {
+		this.myLeftArm = myLeftArm;
+	}
+	
+	public void setRightArm(String myRightArm) {
+		this.myRightArm = myRightArm;
+	}
+	
+	public void setLeftLeg(String myLeftLeg) {
+		this.myLeftLeg = myLeftLeg;
+	}
+	
+	public void setRightLeg(String myRightLeg) {
+		this.myRightLeg = myRightLeg;
+	}
+	
+	public void setHead(String myHead) {
+		this.myHead = myHead;
+	}
+	
+	public void setBody(String myBody) {
+		this.myBody = myBody;
+	}
+	
+	public String getLeftArm () {
+		return myLeftArm;
+	}
+	
+	public String getRightArm () {
+		return myRightArm;
+	}
+	
+	public String getLeftLeg () {
+		return myLeftLeg;
+	}
+	
+	public String getRightLeg() {
+		return myRightLeg;
+	}
+	
+	public String getHead() {
+		return myHead;
+	}
+	
+	public String getBody() {
+		return myBody;
+	}
+			
+	@Override
+	public String toString() {
+		return "";
+	}
+
+	@Override
+	public String myLeftArm() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String myRightArm() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String myHead() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String myLeftLeg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String myRightLeg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String myBody() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
