@@ -40,7 +40,7 @@ public class HangedMan {
 	public static String gameOver() {
 		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | / \\"+"\n"+"_|_"+"\n"+"GAME OVER";
 	}
-	
+	public static String missCounter(char guess) {
 	HashMap<Integer, String> hangManMap = new HashMap<>();
 	
 	hangManMap.put(0, allTries());
@@ -51,7 +51,7 @@ public class HangedMan {
 	hangManMap.put(5, fiveMisses());
 	hangManMap.put(6, gameOver());
 	
-	public static int missCounter(char guess) {
+	
 		if (wordToSolve.contains(guess)) {
 			return hangManMap.get(0);
 		}else {
