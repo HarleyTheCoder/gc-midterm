@@ -16,7 +16,7 @@ public class MidTerm {
 						  //HangedMan class
 		
 		//Set path for the words text file
-		String dirPath = "C:/Coding/eclipse_workspace/gc-midterm/src/";
+		String dirPath = "src/";
 		Path path = Paths.get(dirPath + "HangManWords.txt");
 		
 		//Store words from text file into the list
