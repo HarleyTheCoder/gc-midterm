@@ -13,6 +13,11 @@ public class MidTerm {
 		List<String> words = new ArrayList<>();
 		String wordToSolve;
 		
+		//create new player
+		System.out.println("What is your name?");
+		String name = scan.nextLine();
+		Player player2 = new Player(name);
+		
 		String blankWord; //This is for the display, it might end up in the
 						  //HangedMan class
 		

@@ -16,6 +16,33 @@ public class Validator {
 		return "";
 	}
 	
+	public static boolean isInWord(String word, String letter) {
+		letter = letter.toLowerCase();
+		if (word.contains(letter)) {
+			return true;
+		} else { return false;}
+		
+		}
+	
+	public static String getLetter(Scanner scan) {
+		String regex = "[A-Za-z]";
+		while (true) {
+			try {
+				String letter = scan.nextLine().toLowerCase();
+				if (letter.isEmpty()) {
+					System.out.print("Nothing was entered. Please enter a letter: ");
+				} else if (!letter.matches(regex)) {
+					System.out.print("Error. Please enter a single letter: ");
+				} else {
+					return letter;
+				}
+			} catch (Exception e) {
+				System.out.print("Something went wrong. Please try again: ");
+			}
+		}
+		
+	}
+	/*
 	public static boolean validation (String word, Scanner letter) {
 		String input = letter.next().toLowerCase();
 		boolean isValid = word.contains(input);
@@ -24,13 +51,10 @@ public class Validator {
 				input = letter.next().toLowerCase();
 				isValid = word.contains(input);
 			}
-		
-		
-		
-		return input.startsWith("y");
+	//	return input.startsWith("y");
 	}
 	
-/*
+
 //put the for loop in here to validate all the letters
 public static String checker(String x) {
 	for (int i = 0; i < word.length(); i++) {}

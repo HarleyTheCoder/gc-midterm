@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,32 +52,22 @@ public class Game {
 		
 	}
 	
-	//temp validator
-	public static boolean isInWord(String word, String letter) {
-		if (word.contains(letter)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public static String getLetter(Scanner scan) {
-		String regex = "[A-Za-z]";
-		while (true) {
+	public static void writePlayers(List<Player> players) {
+		List<String> temp = new ArrayList<>();
+		Path path1 = Paths.get("src/Players.txt");
+		for(Player player : players) {
+			temp.add(player.getName() + "@" + player.getWins() + "@" + player.getLosses());
 			try {
-				String letter = scan.nextLine().toLowerCase();
-				if (letter.isEmpty()) {
-					System.out.print("Nothing was entered. Please enter a letter: ");
-				} else if (!letter.matches(regex)) {
-					System.out.print("Error. Please enter a single letter: ");
-				} else {
-					return letter;
-				}
-			} catch (Exception e) {
-				System.out.print("Something went wrong. Please try again: ");
+				Files.write(path1, temp, StandardOpenOption.WRITE, StandardOpenOption.APPEND); 
+			}
+			catch (IOException e){
+				System.out.println("Error.");
+				e.printStackTrace();
 			}
 		}
 		
 	}
+	
+	
 	
 }
