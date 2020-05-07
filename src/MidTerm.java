@@ -6,6 +6,8 @@ public class MidTerm {
 		System.out.println("The ninja monkeys decided to attack.");
 		System.out.println("There was a sorcerous lion that walked into camp to steal the supplies.");
 		System.out.println("Fortunately the monkies were very clever, they they swapped the real supplies with bales of marijuana they had bought at market.");
+
+		System.out.println("Luckily, the lion had friends coming over and his entourage realized their buddy needed backup.");
 	}
 
 }
