@@ -18,7 +18,7 @@ public class MidTerm {
 		String name = scan.nextLine();
 		Player player2 = new Player(name);
 		
-		String blankWord; //This is for the display, it might end up in the
+		List<String> blankWord; //This is for the display, it might end up in the
 						  //HangedMan class
 		
 		//Set path for the words text file
