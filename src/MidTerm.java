@@ -9,6 +9,7 @@ public class MidTerm {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
+		int MISSES_ALLOWED = 6;
 		List<String> words = new ArrayList<>();
 		String wordToSolve;
 		
