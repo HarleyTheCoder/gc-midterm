@@ -34,7 +34,7 @@ public class MidTerm {
 		while (goAgain) { //While loop for a new game. Goes until user quits.
 			
 			wordsByLength = Game.setWordLength(words, scan);
-			wordToSolve = Game.selectWord(wordsByLength); //Pick a word for the game
+			wordToSolve = Game.selectWord(wordsByLength).toUpperCase(); //Pick a word for the game
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
 															//of the word.
 			

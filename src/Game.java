@@ -20,7 +20,7 @@ public class Game {
 			
 			List<String> temp = Files.readAllLines(path);
 			for (String t: temp) {
-				words.add(t);
+				words.add(t.toUpperCase());
 			}
 			
 		} catch (IOException e) {
@@ -48,7 +48,7 @@ public class Game {
 	public static String selectWord(List<String> words) {
 		int num = (int)(Math.random() * words.size());
 		String word = words.get(num);
-		return word;
+		return word.toUpperCase();
 	}
 	
 	//Create the text to display what word to solve
@@ -73,7 +73,7 @@ public class Game {
 		//Get letter to guess
 		System.out.print("Guess a letter: ");
 		
-		guess = Validator.getLetter(scan);
+		guess = Validator.getLetter(scan).toUpperCase();
 		if (usedLetters.contains(guess)) {
 			System.out.println("You've guessed that letter already, try again.");
 			guess = Validator.getLetter(scan);
@@ -106,7 +106,7 @@ public class Game {
 		int length = wordToSolve.length();
 		List<Character> wordToSolveChars = new ArrayList<>();
 		for (int i = 0; i < length; i++) {
-			wordToSolveChars.add(wordToSolve.charAt(i));
+			wordToSolveChars.add(wordToSolve.toUpperCase().charAt(i));
 		}
 		 if (!repeated) {
 	         int times = 0; 
