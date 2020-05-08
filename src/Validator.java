@@ -40,35 +40,25 @@ public class Validator {
 		
 	}
 	
-	
-	//Area to do high score code -
-	//**Move this into the Game class
-	public static void getPlayers(Path path, List<Player> players) {
-		try {
-			if (Files.notExists(path)) {
-				Files.createFile(path);
-			}
-			
-			int tempInt = 0;
-			List<String> temp = Files.readAllLines(path);
-			for (String t: temp) {
-				String[] tempValues = t.split("@");
-				players.add(new Player(tempValues[0]));
+	/**
+	 * Get any string.
+	 */
+	//I edited this
+	public static String getString(Scanner scnr) {
+		// This approach uses exception handling.
+		while (true) {
+			try {
+				if (scnr.hasNext()) {
+					return scnr.nextLine();
+				} else {
+					System.out.print("Input is empty. Please try again: ");
+				}
 				
-				
-				tempInt++;
+			} catch (Exception e) {
+				System.out.print("Invalid string. Please try again: ");
 			}
-			
-		} catch (IOException e) {
-			System.out.println("Error loading file.");
-			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
 	
 	
 }
