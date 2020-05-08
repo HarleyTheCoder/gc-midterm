@@ -123,7 +123,7 @@ public class Game {
 	 	             		+ "\nThere is " + times + " \"" + guess + "\" in the word.");
 	             } else {
 	            	 System.out.println("The letter " + guess + " is in the word you're trying to solve! "
-	 	             		+ "\nThere are " + times + " '" + guess + "'s in the word.");
+	 	             		+ "\nThere are " + times + " \"" + guess + "\"'s in the word.");
 	             }
 	         } else {
 	             System.out.println("Sorry, the letter is not in the word.");
