@@ -11,17 +11,20 @@ public class MidTerm {
 		
 		final int MISSES_ALLOWED = 6;
 		int misses = 0; //might be temporary
-		String guess = ""; //
-		List<String> words = new ArrayList<>();
+		String guess = ""; //might be temp
 		String wordToSolve;
+		List<String> words = new ArrayList<>();
+		List<String> blankWord = new ArrayList<>(); //This is for the display, it might end up in the
+			//HangedMan class
+
+		
 		
 		//create new player
 		/*System.out.println("What is your name?");
 		String name = scan.nextLine();
 		Player player2 = new Player(name);
 		*/
-		List<String> blankWord = new ArrayList<>(); //This is for the display, it might end up in the
-						  //HangedMan class
+		
 		
 		//Set path for the words text file
 		String dirPath = "src/";
@@ -34,12 +37,19 @@ public class MidTerm {
 			
 			wordToSolve = Game.selectWord(words); //Pick a word for the game
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
-														   //of the word.
+															//of the word.
 			
-			Game.nextRound(blankWord, misses, guess);
+			//Show new round until player misses too many times
+			while (misses <= MISSES_ALLOWED) {
+				Game.nextRound(blankWord, misses, scan);
+				
+				//this next part is temporary to prevent infinite loop
+				misses++; //temp
+			}
 			
 			
-	System.out.println(wordToSolve + "\n" + blankWord); //testing code
+			
+	//System.out.println(wordToSolve + "\n" + Game.printWord(blankWord)); //testing code
 			
 			
 			break; //temporary for the sake of ending the loop

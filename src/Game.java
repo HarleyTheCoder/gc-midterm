@@ -46,21 +46,27 @@ public class Game {
 	}
 	
 	//Call the next round, display basic text
-	public static void nextRound(List<String> blankWord, int misses, String guess) {
-		//Display word
-		System.out.println("Word: "); 
-		printWord(blankWord);
+	public static void nextRound(List<String> blankWord, int misses, Scanner scan) {
+		String guess = "";
+		//Display blank word
+		String word = Game.makeWordString(blankWord);
+		System.out.println("Word: " + word); 
+		//Display misses
+		System.out.println("Misses: " + misses);
+		//Get letter to guess
+		System.out.print("Guess a letter: ");
+		guess = Validator.getLetter(scan);
+	System.out.println(guess);//test
 		
 		
 	}
 	
-	public static void printWord(List<String> blankWord) {
+	public static String makeWordString(List<String> blankWord) {
 		String emptyWord = "";
 		for (String word: blankWord) {
 			emptyWord += word;
 		}
-			System.out.print(emptyWord);
-		}
+			return emptyWord;
 	}
 	
 	
