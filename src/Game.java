@@ -120,6 +120,7 @@ public class Game {
 		System.out.printf("%-8s", "LOSSES");
 		System.out.printf("%-8s", "USER");
 		//Now display the data
+		System.out.println();
 	}
 	
 	//Rewrite file where Players are stored
@@ -128,15 +129,18 @@ public class Game {
 		Path path1 = Paths.get("src/Players.txt");
 		for(Player player : players) {
 			temp.add(player.getName() + "@" + player.getWins() + "@" + player.getLosses());
-			try {
-				Files.write(path1, temp, StandardOpenOption.WRITE,
-						StandardOpenOption.TRUNCATE_EXISTING); 
-			}
-			catch (IOException e){
-				System.out.println("Error.");
-				e.printStackTrace();
-			}
+			
 		}
+
+		try {
+			Files.write(path1, temp, StandardOpenOption.WRITE,
+					StandardOpenOption.TRUNCATE_EXISTING); 
+		}
+		catch (IOException e){
+			System.out.println("Error.");
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
