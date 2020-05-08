@@ -116,7 +116,7 @@ public class Game {
 	//Print the high score table
 	public static void showHighScores(List<Player> players) {
 		System.out.println("***HIGH SCORES***");
-		System.out.printf("\n%-8s", "WINS");
+		System.out.printf("%-8s", "WINS");
 		System.out.printf("%-8s", "LOSSES");
 		System.out.printf("%-8s", "USER");
 		//Now display the data
@@ -124,8 +124,8 @@ public class Game {
 			System.out.printf("\n%-8s", player.getWins());
 			System.out.printf("%-8s", player.getLosses());
 			System.out.printf("%-8s", player.getName()); 
-			System.out.println();
 		}
+		System.out.println();
 	}
 	
 	//Rewrite file where Players are stored
@@ -178,10 +178,9 @@ public class Game {
 	public static void getPlayer(String name, int wins, int losses, List<Player> players) {
 		boolean doesExist = false;
 		Player nowPlayer;
-		name = name.toLowerCase();
 		for (Player player: players) {
-			if (name.equals(player.getName())) {
-				System.out.println("User found!/nNow adding to your score.\n");
+			if (name.equalsIgnoreCase(player.getName())) {
+				System.out.println("User found!\nNow adding to your score.\n");
 				nowPlayer = player;
 				player.addWins(wins);
 				player.addLosses(losses);
