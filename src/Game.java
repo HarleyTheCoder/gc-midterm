@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -139,6 +140,8 @@ public class Game {
 	
 	//Print the high score table
 	public static void showHighScores(List<Player> players) {
+		//Sort players by score
+		Collections.sort(players, new SortByScore());
 		System.out.println("***HIGH SCORES***");
 		System.out.printf("%-8s", "WINS");
 		System.out.printf("%-8s", "LOSSES");
