@@ -12,6 +12,7 @@ public class MidTerm {
 		//Wins and losses variables
 		int wins = 0;
 		int losses = 0;
+		boolean didWin = false;
 		String name = "";
 		
 		final int MISSES_ALLOWED = 6;
@@ -44,11 +45,13 @@ public class MidTerm {
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
 				if (misses == 6) {
 					System.out.println(HangedMan.gameOver());
+					didWin = false;
 					losses += 1;
 				} 
 			}
 			if (!Game.checkList(blankWord)) {
 				System.out.println("Congratulations, you've won!");
+				didWin = true;
 				wins += 1;
 			}
 			 	
@@ -68,7 +71,7 @@ public class MidTerm {
 			name = Validator.getString(scan);
 			
 			//Check if name exists, if not create new player
-			Game.getPlayer(name, wins, losses, players);
+			Game.getPlayer(name, didWin, wins, losses, players);
 			
 			//Show table
 			Game.showHighScores(players);

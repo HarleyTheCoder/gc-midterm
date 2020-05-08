@@ -174,15 +174,18 @@ public class Game {
 	}
 		
 	//See if the player exists, if not then create a new one
-	public static void getPlayer(String name, int wins, int losses, List<Player> players) {
+	public static void getPlayer(String name, boolean didWin, int wins, int losses, List<Player> players) {
 		boolean doesExist = false;
 		Player nowPlayer;
 		for (Player player: players) {
 			if (name.equalsIgnoreCase(player.getName())) {
 				System.out.println("User found!\nNow adding to your score.\n");
 				nowPlayer = player;
-				player.addWins(1);
-				player.addLosses(1);
+				if (didWin) {
+					player.addWins(1);
+				} else {
+					player.addLosses(1);
+				}
 				doesExist = true;
 				//code to remove old player
 			}
