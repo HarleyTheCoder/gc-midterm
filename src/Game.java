@@ -56,6 +56,7 @@ public class Game {
 		System.out.println("Word: " + unsolvedWord); 
 		//Display misses
 		System.out.println(HangedMan.missCounter(misses));
+		if (misses < 6) {
 		//Get letter to guess
 		System.out.print("Guess a letter: ");
 		
@@ -67,6 +68,7 @@ public class Game {
 			misses++;
 		} 
 		System.out.println();
+		}
 		return misses;
 	}
 	

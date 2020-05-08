@@ -32,8 +32,8 @@ public class MidTerm {
 		
 		//Store words from text file into the list
 		Game.storeWords(path, words);
-		
-		while (true) { //While loop for a new game. Goes until user quits.
+		boolean goAgain = true;
+		while (goAgain) { //While loop for a new game. Goes until user quits.
 			
 			wordToSolve = Game.selectWord(words); //Pick a word for the game
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
@@ -43,23 +43,28 @@ public class MidTerm {
 			System.out.println(wordToSolve);//test - delete later
 			
 			//Show new round until player misses too many times
-			while (misses <= MISSES_ALLOWED) {
+			while (misses < MISSES_ALLOWED) {
+				
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
-				
-				
-				
+				if (misses == 6) {
+					System.out.println(HangedMan.gameOver());
+				}
+			} 
+			System.out.println("Would you like to play again? yes/no");
+			String userYN = scan.nextLine().toLowerCase();
+			if (userYN.startsWith("n")) {
+				goAgain = false;
 			}
-			
 			
 			
 	//System.out.println(wordToSolve + "\n" + Game.printWord(blankWord)); //testing code
 			
 			
-			break; //temporary for the sake of ending the loop
+			 //temporary for the sake of ending the loop
+		
 		}
-
 	//Close the scanner.
 	scan.close();	
+	
 	}
-
 }
