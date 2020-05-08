@@ -124,16 +124,15 @@ public class Game {
 	}
 	
 	//Rewrite file where Players are stored
-	public static void writePlayers(List<Player> players) {
+	public static void writePlayers(List<Player> players, Path path) {
 		List<String> temp = new ArrayList<>();
-		Path path1 = Paths.get("src/Players.txt");
 		for(Player player : players) {
-			temp.add(player.getName() + "@" + player.getWins() + "@" + player.getLosses());
-			
+			String line = player.getName() + "@" + player.getWins() + "@" + player.getLosses();
+			temp.add(line);
 		}
 
 		try {
-			Files.write(path1, temp, StandardOpenOption.WRITE,
+			Files.write(path, temp, StandardOpenOption.WRITE,
 					StandardOpenOption.TRUNCATE_EXISTING); 
 		}
 		catch (IOException e){
@@ -171,24 +170,25 @@ public class Game {
 		
 	//See if the player exists, if not then create a new one
 	public static void getPlayer(String name, int wins, int losses, List<Player> players) {
-		boolean doesExist = true;
+		boolean doesExist = false;
 		Player nowPlayer;
 		name = name.toLowerCase();
 		for (Player player: players) {
 			if (name.equals(player.getName())) {
 				System.out.println("User found!/nNow adding to your score.\n");
 				nowPlayer = player;
-				nowPlayer.addWins(wins);
-				nowPlayer.addLosses(losses);
-			} else {
-				doesExist = false;
+				player.addWins(wins);
+				player.addLosses(losses);
+				doesExist = true;
+				//code to remove old player
 			}
-			if (!doesExist) {
-				System.out.println("\nCreating new user.\n");
-				nowPlayer = new Player(name);
-				nowPlayer.setWins(wins);
-				nowPlayer.setLosses(losses);
-			}
+		}
+		if (!doesExist) {
+			System.out.println("\nCreating new user.\n");
+			nowPlayer = new Player(name);
+			nowPlayer.setWins(wins);
+			nowPlayer.setLosses(losses);
+			players.add(nowPlayer);
 		}
 	}
 		
