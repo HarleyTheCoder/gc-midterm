@@ -48,9 +48,20 @@ public class Game {
 	//Call the next round, display basic text
 	public static void nextRound(List<String> blankWord, int misses, String guess) {
 		//Display word
+		System.out.println("Word: "); 
+		printWord(blankWord);
+		
 		
 	}
 	
+	public static void printWord(List<String> blankWord) {
+		String emptyWord = "";
+		for (String word: blankWord) {
+			emptyWord += word;
+		}
+			System.out.print(emptyWord);
+		}
+	}
 	
 	
 	//Check the guess, replace the letter
@@ -66,7 +77,7 @@ public class Game {
 	         int times = 0; 
 	         for (int index = 0; index < length; index++) {
 	             if (wordToSolveChars.get(index) == guess) {
-	                 blankWord.set(index, Character.toString(guess));
+	                 blankWord.set(index, Character.toString(guess) + " ");
 	                 correct = true;
 	                 times++;
 	             }

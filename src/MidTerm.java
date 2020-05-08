@@ -9,15 +9,17 @@ public class MidTerm {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int MISSES_ALLOWED = 6;
+		final int MISSES_ALLOWED = 6;
+		int misses = 0; //might be temporary
+		String guess = ""; //
 		List<String> words = new ArrayList<>();
 		String wordToSolve;
 		
 		//create new player
-		System.out.println("What is your name?");
+		/*System.out.println("What is your name?");
 		String name = scan.nextLine();
 		Player player2 = new Player(name);
-		
+		*/
 		List<String> blankWord = new ArrayList<>(); //This is for the display, it might end up in the
 						  //HangedMan class
 		
@@ -33,6 +35,8 @@ public class MidTerm {
 			wordToSolve = Game.selectWord(words); //Pick a word for the game
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
 														   //of the word.
+			
+			Game.nextRound(blankWord, misses, guess);
 			
 			
 	System.out.println(wordToSolve + "\n" + blankWord); //testing code
