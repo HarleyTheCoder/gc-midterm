@@ -55,7 +55,7 @@ public class Game {
 		String unsolvedWord = Game.makeWordString(blankWord);
 		System.out.println("Word: " + unsolvedWord); 
 		//Display misses
-		System.out.println("Misses: " + misses);
+		System.out.println(HangedMan.missCounter(misses));
 		//Get letter to guess
 		System.out.print("Guess a letter: ");
 		

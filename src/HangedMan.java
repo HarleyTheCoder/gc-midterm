@@ -42,33 +42,22 @@ public class HangedMan {
 	public static String gameOver() {
 		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | / \\"+"\n"+"_|_"+"\n"+"GAME OVER";
 	}
-	public static String missCounter(String guess, String wordToSolve) {
-		HashMap<Integer, String> hangManMap = new HashMap<>();
-		int misses = 0;
-		boolean isTrue = true;
-		hangManMap.put(0, allTries());
-		hangManMap.put(1, oneMiss());
-		hangManMap.put(2, twoMisses());
-		hangManMap.put(3, threeMisses());
-		hangManMap.put(4, fourMisses());
-		hangManMap.put(5, fiveMisses());
-		hangManMap.put(6, gameOver());
-		while (isTrue) {
-			for (Integer i: hangManMap.keySet()) {
-				misses = i;
-				if (misses < 6) {
-					if (wordToSolve.contains(guess)) {
-						misses+=0;
-					}else {
-						misses+=1;
-					}
-				}else {
-					isTrue = false;
-				}
-			}
+	public static String missCounter(int misses) {
+		if (misses == 1) {
+			return oneMiss();
+		}else if (misses == 2) {
+			return twoMisses();
+		}else if (misses == 3) {
+			return threeMisses();
+		}else if (misses == 4) {
+			return fourMisses();
+		}else if (misses == 5) {
+			return fiveMisses();
+		}else if (misses == 6) {
+			return gameOver();
+		}else {
+			return allTries();
 		}
-		return hangManMap.get(misses);
+		
 	}
-	
-	
 }
