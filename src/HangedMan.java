@@ -63,29 +63,5 @@ public class HangedMan {
 		}
 	}
 	
-	public static String guessChecker (char guess, String wordToSolve, List<String> blankWord) {
-		boolean repeated = false;
-		boolean correct = false;
-		int length = wordToSolve.length();
-		List<Character> wordToSolveChars = new ArrayList<>();
-		for (int i = 0; i < length; i++) {
-			wordToSolveChars.add(wordToSolve.charAt(i));
-		}
-		 if (!repeated) {
-	         int times = 0; 
-	         for (int index = 0; index < length; index++) {
-	             if (wordToSolveChars.get(index) == guess) {
-	                 blankWord.set(index, Character.toString(guess));
-	                 correct = true;
-	                 times++;
-	             }
-	         }
-	         if (correct) {
-	             System.out.println("The letter " + guess + " is in the word you're trying to solve! There are " + times + " " + guess + " 's in the word. Revealing the letter(s): ");
-	         } else {
-	             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
-	         }
-		 }
 	
-	}
 }
