@@ -89,6 +89,8 @@ public class MidTerm {
 				goAgain = false;
 			} else {
 				misses = 0;
+				wins = 0;
+				losses = 0;
 				blankWord.clear();
 			}
 			
