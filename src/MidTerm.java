@@ -73,7 +73,7 @@ public class MidTerm {
 			Game.showHighScores(players);
 			
 			//Update player file
-			Game.writePlayers(players);
+			Game.writePlayers(players, playerPath);
 			
 			//End high score code area
 			
