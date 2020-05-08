@@ -97,7 +97,6 @@ public class MidTerm {
 				wins = 0;
 				losses = 0;
 				blankWord.clear();
-				usedLetters.clear();
 			}
 			
 			
