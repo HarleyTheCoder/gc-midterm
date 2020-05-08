@@ -129,7 +129,8 @@ public class Game {
 		for(Player player : players) {
 			temp.add(player.getName() + "@" + player.getWins() + "@" + player.getLosses());
 			try {
-				Files.write(path1, temp, StandardOpenOption.WRITE, StandardOpenOption.APPEND); 
+				Files.write(path1, temp, StandardOpenOption.WRITE,
+						StandardOpenOption.TRUNCATE_EXISTING); 
 			}
 			catch (IOException e){
 				System.out.println("Error.");
