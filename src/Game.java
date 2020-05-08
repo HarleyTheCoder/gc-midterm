@@ -99,9 +99,9 @@ public class Game {
 	         }
 	         if (correct) {
 	             System.out.println("The letter " + guess + " is in the word you're trying to solve! "
-	             		+ "There are " + times + " " + guess + " 's in the word. Revealing the letter(s): ");
+	             		+ "There are " + times + " " + guess + " 's in the word.");
 	         } else {
-	             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
+	             System.out.println("Sorry, the letter is not in the word.");
 	         }
 		 }
 		 return correct;
@@ -199,6 +199,7 @@ public class Game {
 		}
 	}
 	
+	//Check the blanks in the blankWord to see if it's finished
 	public static boolean checkList (List<String> blankWord) {
 		for (String s : blankWord) {
 			if (s.contentEquals("_ ")) {

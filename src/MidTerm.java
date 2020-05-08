@@ -86,7 +86,7 @@ public class MidTerm {
 			
 			
 			//Area to ask to play again
-			System.out.println("Would you like to play again? yes/no");
+			System.out.println("Would you like to play again? yes/no: ");
 			String userYN = scan.nextLine().toLowerCase();
 			if (userYN.startsWith("n")) {
 				goAgain = false;
