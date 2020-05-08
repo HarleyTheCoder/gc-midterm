@@ -56,6 +56,7 @@ public class MidTerm {
 				goAgain = false;
 			} else {
 				misses = 0;
+				blankWord.clear();
 			}
 			
 			
