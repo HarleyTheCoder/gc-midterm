@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -182,8 +181,8 @@ public class Game {
 			if (name.equalsIgnoreCase(player.getName())) {
 				System.out.println("User found!\nNow adding to your score.\n");
 				nowPlayer = player;
-				player.addWins(wins);
-				player.addLosses(losses);
+				player.addWins(1);
+				player.addLosses(1);
 				doesExist = true;
 				//code to remove old player
 			}
@@ -198,7 +197,6 @@ public class Game {
 	}
 	
 	public static boolean checkList (List<String> blankWord) {
-		boolean trueFalse;
 		for (String s : blankWord) {
 			if (s.contentEquals("_ ")) {
 				return true;

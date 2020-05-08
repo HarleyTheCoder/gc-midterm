@@ -16,7 +16,6 @@ public class MidTerm {
 		
 		final int MISSES_ALLOWED = 6;
 		int misses = 0; //might be temporary
-		String guess = ""; //might be temp
 		String wordToSolve;
 		List<String> words = new ArrayList<>();
 		List<String> blankWord = new ArrayList<>(); //This is for the display
