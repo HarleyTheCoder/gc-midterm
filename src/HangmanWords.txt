@@ -67,7 +67,6 @@ unicycle
 clandestine
 gambit
 everest
-craftsmanship
 vainglory
 carvel
 xylophone
