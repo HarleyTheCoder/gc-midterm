@@ -19,16 +19,8 @@ public class MidTerm {
 		String guess = ""; //might be temp
 		String wordToSolve;
 		List<String> words = new ArrayList<>();
-		List<String> blankWord = new ArrayList<>(); //This is for the display, it might end up in the
-			//HangedMan class
+		List<String> blankWord = new ArrayList<>(); //This is for the display
 
-		
-		
-		//create new player
-		/*System.out.println("What is your name?");
-		String name = scan.nextLine();
-		Player player2 = new Player(name);
-		*/
 		
 		
 		//Set path for the words text file
@@ -55,6 +47,36 @@ public class MidTerm {
 					System.out.println(HangedMan.gameOver());
 				}
 			} 
+			
+			
+			
+			//Area to test high score code
+			//Keep separate
+			List <Player> players = new ArrayList<>();
+			Path playerPath = Paths.get(dirPath + "Players.txt");
+			
+			//Load existing players in a list
+			Game.setPlayers(playerPath, players);
+			
+			//Get user name,
+			System.out.print("\nEnter a user name for the high score table: ");
+			name = Validator.getString(scan);
+			
+			//Check if name exists, if not create new player
+			Game.getPlayer(name, wins, losses, players);
+			
+			//Show table
+			
+			//Update player file
+			Game.writePlayers(players);
+			
+			//End high score code area
+			
+			
+			
+			
+			
+			//Area to ask to play again
 			System.out.println("Would you like to play again? yes/no");
 			String userYN = scan.nextLine().toLowerCase();
 			if (userYN.startsWith("n")) {
@@ -66,27 +88,7 @@ public class MidTerm {
 			
 			
 			
-			//Area to test high score code
-			//THIS SHOULD BE MOVED TO RIGHT BEFORE THE PLAYER IS ASKED TO PLAY AGAIN
-			//(After it's done)
-			List <Player> players = new ArrayList<>();
-			Path playerPath = Paths.get(dirPath + "Players.txt");
 			
-			//Load existing players in a list
-			Game.setPlayers(playerPath, players);
-			
-			//Get user name,
-			System.out.print("Enter a user name for the high score table: ");
-			name = Validator.getString(scan);
-			
-			//Check if name exists, if not create new player
-			Game.getPlayer(name, wins, losses, players);
-			
-			//Show table
-			
-			
-			//Update player file
-			Game.writePlayers(players);
 			
 		}
 	//Close the scanner.
