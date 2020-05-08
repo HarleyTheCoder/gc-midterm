@@ -109,6 +109,11 @@ public class Game {
 		 return correct;
 	}
 	
+	
+	
+	
+	//Area to do high score code -
+	
 	public static void writePlayers(List<Player> players) {
 		List<String> temp = new ArrayList<>();
 		Path path1 = Paths.get("src/Players.txt");
@@ -126,5 +131,51 @@ public class Game {
 	}
 	
 	
+	//Store players into list
+	public static void setPlayers(Path path, List<Player> players) {
+		try {
+			if (Files.notExists(path)) {
+				Files.createFile(path);
+			}
+				
+			int index = 0;
+			List<String> temp = Files.readAllLines(path);
+			for (String t: temp) {
+				String[] tempValues = t.split("@");
+				players.add(new Player(tempValues[0]));
+				players.get(index).setWins(Integer.parseInt(tempValues[1]));
+				players.get(index).setLosses(Integer.parseInt(tempValues[2]));
+					
+				index++;
+			}
+			
+		} catch (IOException e) {
+			System.out.println("Error loading file.");
+			e.printStackTrace();
+		}
+		
+	}
+		
+	//See if the player exists, if not then create a new one
+	public static void getPlayer(String name, int wins, int losses, List<Player> players) {
+		boolean doesExist = true;
+		Player nowPlayer;
+		name = name.toLowerCase();
+		for (Player player: players) {
+			if (name.equals(player.getName())) {
+				nowPlayer = player;
+				nowPlayer.addWins(wins);
+				nowPlayer.addLosses(losses);
+			} else {
+				doesExist = false;
+			}
+			if (!doesExist) {
+				nowPlayer = new Player(name);
+				nowPlayer.setWins(wins);
+				nowPlayer.setLosses(losses);
+			}
+		}
+	}
+		
 	
 }

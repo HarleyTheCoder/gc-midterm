@@ -38,5 +38,10 @@ public class Player {
 		this.losses = losses;
 	}
 	
+	public String toString() {
+		return "Player [name=" + name + ", wins=" + wins + 
+				", losses=" + losses + "]";
+	}
+	
 	
 }

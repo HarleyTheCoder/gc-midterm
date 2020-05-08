@@ -41,34 +41,4 @@ public class Validator {
 	}
 	
 	
-	//Area to do high score code -
-	//**Move this into the Game class
-	public static void getPlayers(Path path, List<Player> players) {
-		try {
-			if (Files.notExists(path)) {
-				Files.createFile(path);
-			}
-			
-			int tempInt = 0;
-			List<String> temp = Files.readAllLines(path);
-			for (String t: temp) {
-				String[] tempValues = t.split("@");
-				players.add(new Player(tempValues[0]));
-				
-				
-				tempInt++;
-			}
-			
-		} catch (IOException e) {
-			System.out.println("Error loading file.");
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
-	
-	
-	
-	
 }

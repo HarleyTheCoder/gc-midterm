@@ -61,11 +61,14 @@ public class MidTerm {
 			
 	//System.out.println(wordToSolve + "\n" + Game.printWord(blankWord)); //testing code
 			
-			
 			//Area to test high score code
 			List <Player> players = new ArrayList<>();
 			Path playerPath = Paths.get(dirPath + "Players.txt");
 			
+			Game.setPlayers(playerPath, players);
+			for (Player player: players) { //test code
+				System.out.println(player);
+			}
 			
 		}
 	//Close the scanner.
