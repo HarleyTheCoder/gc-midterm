@@ -39,9 +39,12 @@ public class MidTerm {
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
 															//of the word.
 			
+			//TEST CODE - TEMPORARY
+			System.out.println(wordToSolve);//test - delete later
+			
 			//Show new round until player misses too many times
 			while (misses <= MISSES_ALLOWED) {
-				Game.nextRound(blankWord, misses, scan);
+				Game.nextRound(blankWord, wordToSolve, misses, scan);
 				
 				//this next part is temporary to prevent infinite loop
 				misses++; //temp
