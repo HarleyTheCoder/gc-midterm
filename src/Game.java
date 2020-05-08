@@ -44,6 +44,15 @@ public class Game {
 			blankWord.add(blank + " ");
 		}
 	}
+	
+	//Call the next round, display basic text
+	public static void nextRound(List<String> blankWord, int misses, String guess) {
+		//Display word
+		
+	}
+	
+	
+	
 	//Check the guess, replace the letter
 	public static void guessChecker (char guess, String wordToSolve, List<String> blankWord) {
 		boolean repeated = false;
