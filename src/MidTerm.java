@@ -54,6 +54,8 @@ public class MidTerm {
 			String userYN = scan.nextLine().toLowerCase();
 			if (userYN.startsWith("n")) {
 				goAgain = false;
+			} else {
+				misses = 0;
 			}
 			
 			
