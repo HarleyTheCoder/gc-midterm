@@ -46,6 +46,7 @@ public class MidTerm {
 			while (misses < MISSES_ALLOWED && Game.checkList(blankWord)) {
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan, usedLetters);
 				if (misses == 6) {
+					System.out.println(wordToSolve);
 					System.out.println(HangedMan.gameOver());
 					didWin = false;
 					losses += 1;
@@ -97,6 +98,7 @@ public class MidTerm {
 				wins = 0;
 				losses = 0;
 				blankWord.clear();
+				usedLetters.clear();
 			}
 			
 			
