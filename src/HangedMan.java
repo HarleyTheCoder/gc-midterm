@@ -43,24 +43,31 @@ public class HangedMan {
 		return " ____"+"\n"+" | \\O/"+"\n"+" |  |"+"\n"+" | / \\"+"\n"+"_|_"+"\n"+"GAME OVER";
 	}
 	public static String missCounter(String guess, String wordToSolve) {
-	HashMap<Integer, String> hangManMap = new HashMap<>();
-	
-	hangManMap.put(0, allTries());
-	hangManMap.put(1, oneMiss());
-	hangManMap.put(2, twoMisses());
-	hangManMap.put(3, threeMisses());
-	hangManMap.put(4, fourMisses());
-	hangManMap.put(5, fiveMisses());
-	hangManMap.put(6, gameOver());
-	
-	
-		if (wordToSolve.contains(guess)) {
-			return hangManMap.get(0);
-		}else {
-			for(Map.Entry<Integer, String> entry : hangManMap.entrySet()) {
-				System.out.println(entry.getKey() + "\t" + entry.getValue());
+		HashMap<Integer, String> hangManMap = new HashMap<>();
+		int misses = 0;
+		boolean isTrue = true;
+		hangManMap.put(0, allTries());
+		hangManMap.put(1, oneMiss());
+		hangManMap.put(2, twoMisses());
+		hangManMap.put(3, threeMisses());
+		hangManMap.put(4, fourMisses());
+		hangManMap.put(5, fiveMisses());
+		hangManMap.put(6, gameOver());
+		while (isTrue) {
+			for (Integer i: hangManMap.keySet()) {
+				misses = i;
+				if (misses < 6) {
+					if (wordToSolve.contains(guess)) {
+						misses+=0;
+					}else {
+						misses+=1;
+					}
+				}else {
+					isTrue = false;
+				}
 			}
 		}
+		return hangManMap.get(misses);
 	}
 	
 	
