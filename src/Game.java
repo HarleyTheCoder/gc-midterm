@@ -113,6 +113,16 @@ public class Game {
 	
 	//Area to do high score code -
 	
+	//Print the high score table
+	public static void showHighScores(List<Player> player) {
+		System.out.println("***HIGH SCORES***");
+		System.out.printf("\n%-8s", "WINS");
+		System.out.printf("%-8s", "LOSSES");
+		System.out.printf("%-8s", "USER");
+		//Now display the data
+	}
+	
+	//Rewrite file where Players are stored
 	public static void writePlayers(List<Player> players) {
 		List<String> temp = new ArrayList<>();
 		Path path1 = Paths.get("src/Players.txt");
@@ -128,7 +138,6 @@ public class Game {
 		}
 		
 	}
-	
 	
 	//Store players into list
 	public static void setPlayers(Path path, List<Player> players) {
@@ -162,6 +171,7 @@ public class Game {
 		name = name.toLowerCase();
 		for (Player player: players) {
 			if (name.equals(player.getName())) {
+				System.out.println("User found!/nNow adding to your score.\n");
 				nowPlayer = player;
 				nowPlayer.addWins(wins);
 				nowPlayer.addLosses(losses);
@@ -169,6 +179,7 @@ public class Game {
 				doesExist = false;
 			}
 			if (!doesExist) {
+				System.out.println("\nCreating new user.\n");
 				nowPlayer = new Player(name);
 				nowPlayer.setWins(wins);
 				nowPlayer.setLosses(losses);

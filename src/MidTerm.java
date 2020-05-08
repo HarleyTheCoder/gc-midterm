@@ -9,6 +9,11 @@ public class MidTerm {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
+		//Wins and losses variables
+		int wins = 0;
+		int losses = 0;
+		String name = "";
+		
 		final int MISSES_ALLOWED = 6;
 		int misses = 0; //might be temporary
 		String guess = ""; //might be temp
@@ -60,16 +65,28 @@ public class MidTerm {
 			}
 			
 			
-	//System.out.println(wordToSolve + "\n" + Game.printWord(blankWord)); //testing code
 			
 			//Area to test high score code
+			//THIS SHOULD BE MOVED TO RIGHT BEFORE THE PLAYER IS ASKED TO PLAY AGAIN
+			//(After it's done)
 			List <Player> players = new ArrayList<>();
 			Path playerPath = Paths.get(dirPath + "Players.txt");
 			
+			//Load existing players in a list
 			Game.setPlayers(playerPath, players);
-			for (Player player: players) { //test code
-				System.out.println(player);
-			}
+			
+			//Get user name,
+			System.out.print("Enter a user name for the high score table: ");
+			name = Validator.getString(scan);
+			
+			//Check if name exists, if not create new player
+			Game.getPlayer(name, wins, losses, players);
+			
+			//Show table
+			
+			
+			//Update player file
+			Game.writePlayers(players);
 			
 		}
 	//Close the scanner.

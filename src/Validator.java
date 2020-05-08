@@ -40,5 +40,25 @@ public class Validator {
 		
 	}
 	
+	/**
+	 * Get any string.
+	 */
+	//I edited this
+	public static String getString(Scanner scnr) {
+		// This approach uses exception handling.
+		while (true) {
+			try {
+				if (scnr.hasNext()) {
+					return scnr.nextLine();
+				} else {
+					System.out.print("Input is empty. Please try again: ");
+				}
+				
+			} catch (Exception e) {
+				System.out.print("Invalid string. Please try again: ");
+			}
+		}
+	}
+	
 	
 }
