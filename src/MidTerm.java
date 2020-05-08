@@ -42,7 +42,7 @@ public class MidTerm {
 			//Show new round until player misses too many times
 			
 			while (misses < MISSES_ALLOWED && Game.checkList(blankWord)) {
-				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
+				misses = Game.nextRound(blankWord, wordToSolve, misses, scan, usedLetters);
 				if (misses == 6) {
 					System.out.println(HangedMan.gameOver());
 					didWin = false;
