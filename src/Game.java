@@ -191,6 +191,16 @@ public class Game {
 			players.add(nowPlayer);
 		}
 	}
+	
+	public static boolean checkList (List<String> blankWord) {
+		boolean trueFalse;
+		for (String s : blankWord) {
+			if (s.contentEquals("_ ")) {
+				return true;
+			}
+		}
+		return false;
+	}
 		
 	
 }
