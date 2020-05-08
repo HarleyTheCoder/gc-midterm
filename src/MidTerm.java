@@ -31,6 +31,23 @@ public class MidTerm {
 		//Store words from text file into the list
 		Game.storeWords(path, words);
 		boolean goAgain = true;
+		
+		//Print welcome message
+		String welcome = " _         _   _       ____  _                \r\n" + 
+				" | |    ___| |_( )___  |  _ \\| | __ _ _   _    \r\n" + 
+				" | |   / _ \\ __|// __| | |_) | |/ _` | | | |   \r\n" + 
+				" | |__|  __/ |_  \\__ \\ |  __/| | (_| | |_| |   \r\n" + 
+				" |_____\\___|\\__| |___/ |_|   |_|\\__,_|\\__, |   \r\n" + 
+				"  _   _                     __  __    |___/    \r\n" + 
+				" | | | | __ _ _ __   __ _  |  \\/  | __ _ _ __  \r\n" + 
+				" | |_| |/ _` | '_ \\ / _` | | |\\/| |/ _` | '_ \\ \r\n" + 
+				" |  _  | (_| | | | | (_| | | |  | | (_| | | | |\r\n" + 
+				" |_| |_|\\__,_|_| |_|\\__, | |_|  |_|\\__,_|_| |_|\r\n" + 
+				"                    |___/                      ";
+		
+		System.out.println(welcome + "\n");
+		
+		
 		while (goAgain) { //While loop for a new game. Goes until user quits.
 			
 			wordsByLength = Game.setWordLength(words, scan);
