@@ -66,6 +66,7 @@ public class MidTerm {
 			Game.getPlayer(name, wins, losses, players);
 			
 			//Show table
+			Game.showHighScores(players);
 			
 			//Update player file
 			Game.writePlayers(players);
