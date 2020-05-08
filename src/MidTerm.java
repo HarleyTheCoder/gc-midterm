@@ -21,6 +21,7 @@ public class MidTerm {
 		List<String> words = new ArrayList<>();
 		List<String> blankWord = new ArrayList<>(); //This is for the display
 		List<String> usedLetters = new ArrayList<>();
+		List<String> wordsByLength = new ArrayList<>();
 		
 		
 		//Set path for the words text file
@@ -32,7 +33,8 @@ public class MidTerm {
 		boolean goAgain = true;
 		while (goAgain) { //While loop for a new game. Goes until user quits.
 			
-			wordToSolve = Game.selectWord(words); //Pick a word for the game
+			wordsByLength = Game.setWordLength(words, scan);
+			wordToSolve = Game.selectWord(wordsByLength); //Pick a word for the game
 			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
 															//of the word.
 			

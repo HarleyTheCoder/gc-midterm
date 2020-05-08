@@ -55,5 +55,27 @@ public class Validator {
 		}
 	}
 	
+	//Get integer within a specific range
+	public static int getIntInRange(int a, int b, Scanner scan) {
+		boolean cont = true;
+		while(cont) {
+			try {
+				int num = Integer.parseInt(scan.nextLine());
+				if (num < a || num > b) {
+					throw new IndexOutOfBoundsException();
+				} else {
+					return num;
+				}
+			} catch (IndexOutOfBoundsException ie) {
+				System.out.println("Selection must be between " + a +
+						" and " +  b + ". Please try again. (" + a + "-" + b + ")");
+			} catch (NumberFormatException e) {
+				System.out.println("Input must be a number (" + a + "-" + b + 
+									"). Please try again.");
+			}
+		}
+		return -1;
+	}
+	
 	
 }

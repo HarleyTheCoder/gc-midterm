@@ -29,6 +29,21 @@ public class Game {
 		}
 	}
 	
+	//Let user decide how long they want the word to be
+	public static List<String> setWordLength(List<String> words, Scanner scan) {
+		List<String> newWords = new ArrayList<>();
+		System.out.print("How many letters should the word be? (4-12): ");
+		int wordLength = Validator.getIntInRange(4, 12, scan);
+		for (String word: words) {
+			if (word.length() == wordLength) {
+				newWords.add(word);
+			}
+		}
+		return newWords;
+	}
+	
+	
+	
 	//Select a word to use in the game
 	public static String selectWord(List<String> words) {
 		int num = (int)(Math.random() * words.size());
