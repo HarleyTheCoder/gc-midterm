@@ -114,13 +114,18 @@ public class Game {
 	//Area to do high score code -
 	
 	//Print the high score table
-	public static void showHighScores(List<Player> player) {
+	public static void showHighScores(List<Player> players) {
 		System.out.println("***HIGH SCORES***");
 		System.out.printf("\n%-8s", "WINS");
 		System.out.printf("%-8s", "LOSSES");
 		System.out.printf("%-8s", "USER");
 		//Now display the data
-		System.out.println();
+		for(Player player : players) {
+			System.out.printf("\n%-8s", player.getWins());
+			System.out.printf("%-8s", player.getLosses());
+			System.out.printf("%-8s", player.getName()); 
+			System.out.println();
+		}
 	}
 	
 	//Rewrite file where Players are stored
@@ -129,18 +134,15 @@ public class Game {
 		Path path1 = Paths.get("src/Players.txt");
 		for(Player player : players) {
 			temp.add(player.getName() + "@" + player.getWins() + "@" + player.getLosses());
-			
+			try {
+				Files.write(path1, temp, StandardOpenOption.WRITE,
+						StandardOpenOption.TRUNCATE_EXISTING); 
+			}
+			catch (IOException e){
+				System.out.println("Error.");
+				e.printStackTrace();
+			}
 		}
-
-		try {
-			Files.write(path1, temp, StandardOpenOption.WRITE,
-					StandardOpenOption.TRUNCATE_EXISTING); 
-		}
-		catch (IOException e){
-			System.out.println("Error.");
-			e.printStackTrace();
-		}
-		
 		
 	}
 	
