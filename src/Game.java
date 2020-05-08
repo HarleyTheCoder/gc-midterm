@@ -46,7 +46,7 @@ public class Game {
 	}
 	
 	//Call the next round, display basic text
-	public static void nextRound(List<String> blankWord, String wordToSolve,
+	public static int nextRound(List<String> blankWord, String wordToSolve,
 									int misses, Scanner scan) {
 		
 		String guess = "";
@@ -58,13 +58,16 @@ public class Game {
 		System.out.println("Misses: " + misses);
 		//Get letter to guess
 		System.out.print("Guess a letter: ");
+		
 		guess = Validator.getLetter(scan);
 		
-	
 		//See if the guess is correct
 		didHit = Game.guessChecker(guess.charAt(0), wordToSolve, blankWord);
-		
-		
+		if (!didHit) {
+			misses++;
+		} 
+		System.out.println();
+		return misses;
 	}
 	
 	public static String makeWordString(List<String> blankWord) {

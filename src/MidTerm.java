@@ -44,10 +44,10 @@ public class MidTerm {
 			
 			//Show new round until player misses too many times
 			while (misses <= MISSES_ALLOWED) {
-				Game.nextRound(blankWord, wordToSolve, misses, scan);
+				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
 				
-				//this next part is temporary to prevent infinite loop
-				misses++; //temp
+				
+				
 			}
 			
 			
