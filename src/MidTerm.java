@@ -37,20 +37,16 @@ public class MidTerm {
 															//of the word.
 			
 			//TEST CODE - TEMPORARY
-			System.out.println(wordToSolve);//test - delete later
+			//test - delete later
 			
 			//Show new round until player misses too many times
 			while (misses < MISSES_ALLOWED) {
-				
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
 				if (misses == 6) {
 					System.out.println(HangedMan.gameOver());
 					losses += 1;
-				} else if (blankWord.containsAll(blankWord)) {
-					System.out.println("Congratulations, you've won!");
-					wins += 1;
-				}
-			} 
+				} 
+				
 			
 			
 			
@@ -93,7 +89,7 @@ public class MidTerm {
 			
 			
 			
-			
+			}	
 			
 		}
 	//Close the scanner.
