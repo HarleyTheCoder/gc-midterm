@@ -208,6 +208,10 @@ public class Game {
 		}
 		return false;
 	}
+	
+	
+	//METHODS TO CHOOSE WORD BASED ON ITS LENGTH
+	
 		
 	
 }
