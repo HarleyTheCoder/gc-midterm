@@ -19,7 +19,7 @@ public class MidTerm {
 		String wordToSolve;
 		List<String> words = new ArrayList<>();
 		List<String> blankWord = new ArrayList<>(); //This is for the display
-
+		List<String> usedLetters = new ArrayList<>();
 		
 		
 		//Set path for the words text file

@@ -2,7 +2,7 @@ shark
 scissors
 bookshelves
 airplane
-artificial 
+artificial
 theorem
 polynomial
 nucleus
