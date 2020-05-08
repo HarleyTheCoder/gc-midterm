@@ -45,6 +45,10 @@ public class MidTerm {
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan);
 				if (misses == 6) {
 					System.out.println(HangedMan.gameOver());
+					losses += 1;
+				} else if (blankWord.containsAll(blankWord)) {
+					System.out.println("Congratulations, you've won!");
+					wins += 1;
 				}
 			} 
 			
