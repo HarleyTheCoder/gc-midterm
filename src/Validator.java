@@ -7,14 +7,6 @@ import java.util.Scanner;
  * 3. find a letter in a string (Return true for a “hit”, meaning the letter was found in the string. Return False for “miss”, meaning it was not.)
  */
 public class Validator {
-	//code
-	
-	public String validation(String word, String letter) {
-		
-		Scanner scnr = new Scanner(System.in);
-		
-		return "";
-	}
 	
 	public static boolean isInWord(String word, String letter) {
 		letter = letter.toLowerCase();

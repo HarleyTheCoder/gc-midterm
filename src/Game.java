@@ -44,8 +44,41 @@ public class Game {
 			blankWord.add(blank + " ");
 		}
 	}
+	
+	//Call the next round, display basic text
+	public static void nextRound(List<String> blankWord, String wordToSolve,
+									int misses, Scanner scan) {
+		
+		String guess = "";
+		boolean didHit;
+		//Display blank word
+		String unsolvedWord = Game.makeWordString(blankWord);
+		System.out.println("Word: " + unsolvedWord); 
+		//Display misses
+		System.out.println("Misses: " + misses);
+		//Get letter to guess
+		System.out.print("Guess a letter: ");
+		guess = Validator.getLetter(scan);
+		
+	
+		//See if the guess is correct
+		didHit = Game.guessChecker(guess.charAt(0), wordToSolve, blankWord);
+		
+		
+	}
+	
+	public static String makeWordString(List<String> blankWord) {
+		String emptyWord = "";
+		for (String word: blankWord) {
+			emptyWord += word;
+		}
+			return emptyWord;
+	}
+	
+	
 	//Check the guess, replace the letter
-	public static void guessChecker (char guess, String wordToSolve, List<String> blankWord) {
+	//Returns true or false on whether it found the letter or not
+	public static boolean guessChecker (char guess, String wordToSolve, List<String> blankWord) {
 		boolean repeated = false;
 		boolean correct = false;
 		int length = wordToSolve.length();
@@ -57,7 +90,7 @@ public class Game {
 	         int times = 0; 
 	         for (int index = 0; index < length; index++) {
 	             if (wordToSolveChars.get(index) == guess) {
-	                 blankWord.set(index, Character.toString(guess));
+	                 blankWord.set(index, Character.toString(guess) + " ");
 	                 correct = true;
 	                 times++;
 	             }
@@ -68,7 +101,7 @@ public class Game {
 	             System.out.println("Sorry, the letter is not in the word. Your secret word:  ");
 	         }
 		 }
-	
+		 return correct;
 	}
 	
 	public static void writePlayers(List<Player> players) {
