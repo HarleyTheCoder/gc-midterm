@@ -31,6 +31,10 @@ public class Game {
 	}
 	
 	//Let user decide how long they want the word to be
+	/*
+	 * (Rather than storing separate files, the program
+	 * stores all words with that number of letters into a list.)
+	 */
 	public static List<String> setWordLength(List<String> words, Scanner scan) {
 		List<String> newWords = new ArrayList<>();
 		System.out.print("How many letters should the word be? (4-12): ");
@@ -42,7 +46,6 @@ public class Game {
 		}
 		return newWords;
 	}
-	
 	
 	
 	//Select a word to use in the game
@@ -237,9 +240,5 @@ public class Game {
 		return false;
 	}
 	
-	
-	//METHODS TO CHOOSE WORD BASED ON ITS LENGTH
-	
-		
 	
 }

@@ -52,11 +52,8 @@ public class MidTerm {
 			
 			wordsByLength = Game.setWordLength(words, scan);
 			wordToSolve = Game.selectWord(wordsByLength).toUpperCase(); //Pick a word for the game
-			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display
-															//of the word.
+			Game.createEmptyWord(wordToSolve, blankWord); //Create empty display of the word.
 			
-			//TEST CODE - TEMPORARY
-			//test - delete later
 			
 			//Show new round until player misses too many times
 			

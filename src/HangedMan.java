@@ -1,10 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 /*
  * The HangMan() Class object could implement an interface, if you want. 
  * It will need String variables to set up the display. 
