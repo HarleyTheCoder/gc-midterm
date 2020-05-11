@@ -21,7 +21,7 @@ public class Game {
 			
 			List<String> temp = Files.readAllLines(path);
 			for (String t: temp) {
-				words.add(t.toUpperCase());
+				words.add(t.trim().toUpperCase()); //Added trim to eliminate blank space issue
 			}
 			
 		} catch (IOException e) {
@@ -59,7 +59,11 @@ public class Game {
 	public static void createEmptyWord (String word, List<String> blankWord) {
 		String blank = "_";
 		for (int i = 0; i < word.length(); i++) {
-			blankWord.add(blank + " ");
+			if (i == word.length() - 1) {
+				blankWord.add(blank);
+			} else {
+				blankWord.add(blank + " ");
+			}
 		}
 	}
 	
@@ -74,16 +78,19 @@ public class Game {
 		System.out.println("Word: " + unsolvedWord); 
 		//Display misses
 		System.out.println(HangedMan.missCounter(misses));
+		//Show the used letters
+		Game.showUsedLetters(usedLetters);
 		//Get letter to guess
 		System.out.print("Guess a letter: ");
 		
 		guess = Validator.getLetter(scan).toUpperCase();
-		if (usedLetters.contains(guess)) {
-			System.out.println("You've guessed that letter already, try again.");
-			guess = Validator.getLetter(scan);
-		}else {
-			usedLetters.add(guess);
+		while (usedLetters.contains(guess)) { //fixed this so it keeps looping if letter
+											  //was already guessed.
+			System.out.print("You've guessed that letter already, try again: ");
+			guess = Validator.getLetter(scan).toUpperCase();
 		}
+		usedLetters.add(guess.toUpperCase());
+		
 		//See if the guess is correct
 		didHit = Game.guessChecker(guess.charAt(0), wordToSolve, blankWord);
 		if (!didHit) {
@@ -136,6 +143,28 @@ public class Game {
 		 return correct;
 	}
 	
+	//Show what letters have been used
+	public static void showUsedLetters(List<String> letters) {
+		Collections.sort(letters);
+		System.out.print("Used letters: ");
+		int counter = 0;
+		String letterString = "";
+		if (letters.isEmpty()) {
+			System.out.print("none\n");
+		} else {
+			for (String letter: letters) {
+				if (letterString.equals("")) {
+					letterString = letter;
+				} else if (counter == 7) {
+					letterString += ",\n              " + letter;
+				} else {
+					letterString += ", " + letter;
+				}
+				counter++;
+			}
+			System.out.print(letterString + "\n");
+		}
+	}
 	
 	
 	
@@ -158,12 +187,44 @@ public class Game {
 		System.out.println();
 	}
 	
+	//See more stats if they want to see them
+	public static void showMoreStats(List<Player> players) {
+		Collections.sort(players, new SortByStats());
+		//Calculation variables
+		String percentWins = "";
+		String avgGuesses = "";
+		String avgWordLength = "";
+		//Set up display
+		System.out.println();
+		System.out.printf("%-15s", "USER");
+		System.out.printf("%-15s", "% OF");
+		System.out.printf("%-15s", "AVG # OF");
+		System.out.printf("%-15s", "AVG WORD");
+		System.out.print("\n");
+		System.out.printf("%-15s", "NAME");
+		System.out.printf("%-15s", "WINS");
+		System.out.printf("%-15s", "GUESSES");
+		System.out.printf("%-15s", "LENGTH");
+		//Now display the data
+		for(Player player : players) {
+			percentWins = player.calcWinPercent();
+			avgGuesses = player.calcAvgGuesses();
+			avgWordLength = player.calcAvgLength();
+			System.out.printf("\n%-15s", player.getName()); 
+			System.out.printf("%-15s", percentWins);
+			System.out.printf("%-15s", avgGuesses);
+			System.out.printf("%-15s", avgWordLength);
+		}
+		System.out.println();
+	}
+	
 	//Rewrite file where Players are stored
 	public static void writePlayers(List<Player> players, Path path) {
 		List<String> temp = new ArrayList<>();
 		for(Player player : players) {
 
-			String line = player.getName() + "@" + player.getWins() + "@" + player.getLosses();
+			String line = player.getName() + "@" + player.getWins() + "@" + player.getLosses() + 
+					"@" + player.getGuessNums() + "@" + player.getWordLengths();
 			temp.add(line);
 		}
 
@@ -180,7 +241,8 @@ public class Game {
 	}
 	
 	//Store players into list
-	public static void setPlayers(Path path, List<Player> players) {
+	public static void setPlayers(Path path, List<Player> players,
+								boolean didWin, int guesses, int wordLength) {
 		try {
 			if (Files.notExists(path)) {
 				Files.createFile(path);
@@ -193,6 +255,21 @@ public class Game {
 				players.add(new Player(tempValues[0]));
 				players.get(index).setWins(Integer.parseInt(tempValues[1]));
 				players.get(index).setLosses(Integer.parseInt(tempValues[2]));
+				try { //this is in case nothing is in the file for this part
+					players.get(index).setGuessNums(tempValues[3]);
+				} catch (Exception e) {
+					if (didWin) {
+						players.get(index).setGuessNums(guesses + "");
+					} else {
+						players.get(index).setGuessNums("-1");
+					}
+					
+				}
+				try { //this is in case nothing is in the file for this part
+					players.get(index).setWordLengths(tempValues[4]);
+				} catch (Exception e) {
+					players.get(index).setWordLengths(wordLength + "");
+				}
 					
 				index++;
 			}
@@ -205,7 +282,9 @@ public class Game {
 	}
 		
 	//See if the player exists, if not then create a new one
-	public static void getPlayer(String name, boolean didWin, int wins, int losses, List<Player> players) {
+	//Also update player if it is found
+	public static void getPlayer(String name, boolean didWin, int guesses, int wordLength,
+								int wins, int losses, List<Player> players) {
 		boolean doesExist = false;
 		Player nowPlayer;
 		for (Player player: players) {
@@ -214,11 +293,12 @@ public class Game {
 				nowPlayer = player;
 				if (didWin) {
 					player.addWins(1);
+					player.addGuessNums(guesses + "");
 				} else {
 					player.addLosses(1);
 				}
+				player.addWordLengths(wordLength + "");
 				doesExist = true;
-				//code to remove old player
 			}
 		}
 		if (!doesExist) {
@@ -226,6 +306,10 @@ public class Game {
 			nowPlayer = new Player(name);
 			nowPlayer.setWins(wins);
 			nowPlayer.setLosses(losses);
+			if (didWin) {  //Only add num of guesses if they won
+				nowPlayer.setGuessNums(guesses + "");
+			}
+			nowPlayer.setWordLengths(wordLength + "");
 			players.add(nowPlayer);
 		}
 	}
@@ -233,7 +317,7 @@ public class Game {
 	//Check the blanks in the blankWord to see if it's finished
 	public static boolean checkList (List<String> blankWord) {
 		for (String s : blankWord) {
-			if (s.contentEquals("_ ")) {
+			if (s.contains("_")) {
 				return true;
 			}
 		}

@@ -12,11 +12,12 @@ public class MidTerm {
 		//Wins and losses variables
 		int wins = 0;
 		int losses = 0;
+		int guesses = 0;
 		boolean didWin = false;
 		String name = "";
 		
 		final int MISSES_ALLOWED = 6;
-		int misses = 0; //might be temporary
+		int misses = 0;
 		String wordToSolve;
 		List<String> words = new ArrayList<>();
 		List<String> blankWord = new ArrayList<>(); //This is for the display
@@ -56,39 +57,41 @@ public class MidTerm {
 			
 			
 			//Show new round until player misses too many times
-			
 			while (misses < MISSES_ALLOWED && Game.checkList(blankWord)) {
 				misses = Game.nextRound(blankWord, wordToSolve, misses, scan, usedLetters);
 				if (misses == 6) {
-					System.out.println(wordToSolve);
 					System.out.println(HangedMan.gameOver());
 					didWin = false;
 					losses += 1;
 				} 
+				guesses++;
 			}
 			if (!Game.checkList(blankWord)) {
 				System.out.println("Congratulations, you've won!");
 				didWin = true;
 				wins += 1;
 			}
-			 	
+			
+			//Moved this to display it no matter the outcome
+			System.out.println("The word was " + wordToSolve + "."); 
 			
 			
-			
+					
 			//Area to test high score code
 			//Keep separate
 			List <Player> players = new ArrayList<>();
 			Path playerPath = Paths.get(dirPath + "Players.txt");
 			
 			//Load existing players in a list
-			Game.setPlayers(playerPath, players);
+			Game.setPlayers(playerPath, players, didWin, guesses, wordToSolve.length());
 			
 			//Get user name,
 			System.out.print("\nEnter a user name for the high score table: ");
 			name = Validator.getString(scan);
 			
 			//Check if name exists, if not create new player
-			Game.getPlayer(name, didWin, wins, losses, players);
+			Game.getPlayer(name, didWin, guesses, wordToSolve.length(),
+							wins, losses, players);
 			
 			//Show table
 			Game.showHighScores(players);
@@ -96,28 +99,36 @@ public class MidTerm {
 			//Update player file
 			Game.writePlayers(players, playerPath);
 			
+			//Ask to show more stats, if so then show
+			System.out.print("\nWould you like to see more user stats? yes/no: ");
+			if (Validator.getYesNo(scan)) {
+				Game.showMoreStats(players);
+			}
+			
 			//End high score code area
 			
 			
 			
-			
-			
 			//Area to ask to play again
-			System.out.println("Would you like to play again? yes/no: ");
-			String userYN = scan.nextLine().toLowerCase();
-			if (userYN.startsWith("n")) {
-				goAgain = false;
-			} else {
+			System.out.println();
+			System.out.print("Would you like to play again? yes/no: ");
+			if (!Validator.getYesNo(scan)) {   //I fixed this code to make sure we get an
+				goAgain = false;   			   //answer, it would have just counted as "no"
+				System.out.println("\nGoodbye!");//if they inputed incorrectly.
+			} else {                        
 				misses = 0;
 				wins = 0;
 				losses = 0;
+				guesses = 0;
 				blankWord.clear();
 				usedLetters.clear();
+				goAgain = true; //this needs to be here to work right
+				System.out.println("\n\n" + welcome);
 			}
 			
 			
 			
-			}	
+		}	
 			
 		
 	//Close the scanner.

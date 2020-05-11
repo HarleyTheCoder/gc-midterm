@@ -67,14 +67,29 @@ public class Validator {
 					return num;
 				}
 			} catch (IndexOutOfBoundsException ie) {
-				System.out.println("Selection must be between " + a +
-						" and " +  b + ". Please try again. (" + a + "-" + b + ")");
+				System.out.print("Selection must be between " + a +
+						" and " +  b + ". Please try again. (" + a + "-" + b + "): ");
 			} catch (NumberFormatException e) {
-				System.out.println("Input must be a number (" + a + "-" + b + 
-									"). Please try again.");
+				System.out.print("Input must be a number (" + a + "-" + b + 
+									"). Please try again.: ");
 			}
 		}
 		return -1;
+	}
+	
+	//Get yes or no answer
+	public static boolean getYesNo(Scanner scan) {
+		String input = Validator.getString(scan).toLowerCase();
+		while (true) {
+			if (input.startsWith("y")) {
+				return true;
+			} else if (input.startsWith("n")) {
+				return false;
+			} else {
+				System.out.print("Invalid input. Please try again. (y/n): ");
+				input = scan.nextLine().toLowerCase();
+			}
+		}
 	}
 	
 	
