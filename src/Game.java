@@ -324,5 +324,29 @@ public class Game {
 		return false;
 	}
 	
+	//Tool to see if there are repeats in word list
+	public static void findRepeats(List<String> words) {
+		List<String> repeats = new ArrayList<>();
+		List<String> words2 = words;
+		for (int i = 0; i < words.size(); i++) {
+			for (int a = 0; a < words2.size(); a++) {
+				if (i != a && words.get(i).equalsIgnoreCase(words2.get(a))) {
+					if (repeats.isEmpty()) {
+						repeats.add(words.get(i));
+					} else {
+						for (int k = 0; k < repeats.size(); k++) {
+							if (repeats.get(k) != words.get(i)) {
+								repeats.add(words.get(i));
+							}
+						}
+					}
+				}
+			}
+		}
+		//Display repeats
+		for (String repeat: repeats) {
+			System.out.println(repeat);
+		}
+	}
 	
 }

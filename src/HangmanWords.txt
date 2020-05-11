@@ -107,7 +107,6 @@ gutter
 polite
 galaxy
 rotten
-ensure
 mobile
 strict
 census
@@ -155,7 +154,6 @@ consumption
 fashionable
 development
 entitlement
-cooperation
 resignation
 exploration
 declaration

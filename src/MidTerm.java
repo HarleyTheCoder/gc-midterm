@@ -33,6 +33,8 @@ public class MidTerm {
 		Game.storeWords(path, words);
 		boolean goAgain = true;
 		
+		//Game.findRepeats(words);//test to see if any words repeat in list
+		
 		//Print welcome message
 		String welcome = " _         _   _       ____  _                \r\n" + 
 				" | |    ___| |_( )___  |  _ \\| | __ _ _   _    \r\n" + 
